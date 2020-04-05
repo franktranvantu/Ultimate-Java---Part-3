@@ -25,7 +25,7 @@ public class Main {
         LongConsumer longConsumer = longValue -> System.out.println(longValue);
         DoubleConsumer doubleConsumer = doubleValue -> System.out.println(doubleValue);
 
-        BiConsumer<Teacher, List<Student>> biConsumer = (teacher, student) -> System.out.println(student + ": " + teacher);
+        BiConsumer<Teacher, List<Student>> biConsumer = (teacher, student) -> System.out.println(teacher + ": " + student);
         ObjIntConsumer<Student> objIntConsumer = (student, intValue) -> System.out.println(intValue + ": " + student);
         ObjLongConsumer<Student> objLongConsumer = (student, longValue) -> System.out.println(longValue + ": " + student);
         ObjDoubleConsumer<Student> objDoubleConsumer = (student, doubleValue) -> System.out.println(doubleValue + ": " + student);
