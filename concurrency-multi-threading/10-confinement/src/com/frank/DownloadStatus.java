@@ -1,4 +1,4 @@
-package frank;
+package com.frank;
 
 public class DownloadStatus {
 
