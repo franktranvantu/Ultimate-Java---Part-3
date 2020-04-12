@@ -1,4 +1,4 @@
-package com.frank;
+package frank;
 
 import java.util.stream.IntStream;
 
@@ -6,8 +6,8 @@ public class DownloadFileTask implements Runnable {
 
     private DownloadStatus status;
 
-    public DownloadFileTask() {
-        this.status = new DownloadStatus();
+    public DownloadFileTask(DownloadStatus status) {
+        this.status = status;
     }
 
     @Override
@@ -16,9 +16,5 @@ public class DownloadFileTask implements Runnable {
         IntStream.rangeClosed(1, 10_000)
                  .forEach(i -> status.incrementTotalBytes());
         System.out.println("Download complete: " + Thread.currentThread().getName());
-    }
-
-    public DownloadStatus getStatus() {
-        return status;
     }
 }

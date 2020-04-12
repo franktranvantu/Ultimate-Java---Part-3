@@ -1,4 +1,4 @@
-package com.frank;
+package frank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,18 +7,15 @@ import java.util.stream.Stream;
 public class Main {
 
     public static void main(String[] args) {
+        DownloadStatus status = new DownloadStatus();
         List<Thread> threads = new ArrayList<>();
-        List<DownloadFileTask> tasks = new ArrayList<>();
 
-        Stream<Thread> stream = Stream.generate(() -> {
-            DownloadFileTask task = new DownloadFileTask();
-            tasks.add(task);
-            return new Thread(task);
-        }).limit(10);
+        Stream<Thread> stream = Stream.generate(() -> new Thread(new DownloadFileTask(status)))
+                .limit(10);
 
         stream.forEach(thread -> {
-            thread.start();
             threads.add(thread);
+            thread.start();
         });
 
         threads.forEach(thread -> {
@@ -29,9 +26,7 @@ public class Main {
             }
         });
 
-        int totalBytes = tasks.stream()
-             .mapToInt(task -> task.getStatus().getTotalBytes())
-             .sum();
+        int totalBytes = status.getTotalBytes();
         System.out.println(totalBytes);
     }
 }
