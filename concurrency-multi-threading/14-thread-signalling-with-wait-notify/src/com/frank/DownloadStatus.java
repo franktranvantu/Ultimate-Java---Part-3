@@ -1,8 +1,8 @@
-package frank;
+package com.frank;
 
 public class DownloadStatus {
 
-    private volatile boolean isDone;
+    private boolean isDone;
     private int totalBytes;
 
     public int getTotalBytes() {
